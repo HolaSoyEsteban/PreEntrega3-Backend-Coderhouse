@@ -1,3 +1,7 @@
+import User from '../models/user.model.js';
+import Cart from '../models/cart.model.js';
+import Product from '../models/product.model.js';
+
 export const readCartsController = async (req, res) => {
     try {
         const carts = await Cart.find().lean().exec();
@@ -84,10 +88,11 @@ export const addProductCartController = async (req, res) => {
   
       await Cart.findByIdAndUpdate(cartId, { products: cart.products }).exec();
 
-      user.cart.products.push({
-        product: productId,
-        quantity: 1
-      });
+      // const productsCart = user.cart.products;
+      // productsCart.push({
+      //   product: productId,
+      //   quantity: 1})
+      
       await user.save();
   
       res.status(201).json(cart);

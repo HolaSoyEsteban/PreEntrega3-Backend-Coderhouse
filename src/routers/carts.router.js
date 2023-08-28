@@ -1,6 +1,6 @@
 import { Router } from "express";
-import Cart from '../dao/models/cart.model.js';
-import Product from '../dao/models/product.model.js';
+import Cart from '../models/cart.model.js';
+import Product from '../models/product.model.js';
 import { 
   readCartsController, 
   readCartController, 

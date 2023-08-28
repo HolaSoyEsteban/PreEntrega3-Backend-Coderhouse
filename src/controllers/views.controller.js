@@ -1,5 +1,5 @@
-import ProductModel from '../dao/models/product.model.js';
-import cartModel from "../dao/models/cart.model.js";
+import ProductModel from '../models/product.model.js';
+import cartModel from "../models/cart.model.js";
 
 export const readViewsProductsController = async (req, res) => {
     try {
@@ -44,10 +44,14 @@ export const readViewsProductController = async (req, res) => {
     try {
       const id = req.params.cid
       const result = await ProductModel.findById(id).lean().exec();
+      const cartInfo = {
+        cart: req.session.user.cart,
+      };
+
       if (result === null) {
         return res.status(404).json({ status: 'error', error: 'Product not found' });
       }
-      res.render('productDetail', result);
+      res.render('productDetail', { product: result, cartID: cartInfo.cart });
     } catch (error) {
       res.status(500).json({ error: 'Error al leer los productos' });
     }

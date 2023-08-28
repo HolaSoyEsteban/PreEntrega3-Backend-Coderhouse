@@ -1,5 +1,5 @@
 import passport from 'passport';
-import Cart from '../dao/models/cart.model.js'
+import Cart from '../models/cart.model.js'
 
 export const createUserController = async (req, res, next) => {
     passport.authenticate('register', async (err, user, info) => {
