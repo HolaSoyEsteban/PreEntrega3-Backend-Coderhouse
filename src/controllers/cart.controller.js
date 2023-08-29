@@ -1,6 +1,7 @@
 import User from '../models/user.model.js';
 import Cart from '../models/cart.model.js';
 import Product from '../models/product.model.js';
+import { ProductService } from '../services/index.js';
 
 export const readCartsController = async (req, res) => {
     try {
@@ -57,7 +58,8 @@ export const addProductCartController = async (req, res) => {
       const userId = req.session.user._id; // Obtener el ID del usuario de la sesión
       const user = await User.findById(userId);
   
-      const product = await Product.findById(productId).lean().exec();
+      //const product = await Product.findById(productId).lean().exec();
+      const product = await ProductService.getById(productId)
   
       if (!product) {
         res.status(404).json({ error: 'Producto no encontrado' });
