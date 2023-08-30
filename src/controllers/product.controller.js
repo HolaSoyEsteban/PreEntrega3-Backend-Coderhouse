@@ -32,7 +32,8 @@ export const updateProductController = async (req, res) => {
         return;
       }
   
-      const products = await Product.find().lean().exec();
+      //const products = await Product.find().lean().exec();
+      const products = await ProductService.getAll();
   
       req.io.emit('productList', products);
   
@@ -55,7 +56,8 @@ export const deleteProductController = async (req, res) => {
         return;
       }
   
-      const products = await Product.find().lean().exec();
+      //const products = await Product.find().lean().exec();
+      const products = await ProductService.getAll();
   
       req.io.emit('productList', products);
   
