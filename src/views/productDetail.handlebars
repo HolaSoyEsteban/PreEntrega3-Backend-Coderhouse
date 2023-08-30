@@ -20,12 +20,15 @@
                 <td>{{this.product.code}}</td>
                 <td>{{this.product.stock}}</td>
                 <td>{{this.product.category}}</td>
+                {{#if this.userAdminControl}}
                 <td>
                     {{!-- <form action="/api/carts/{{ this.cartID }}/product/{{this.product._id}}" method="POST">
                         <button type="submit">Agregar al carrito</button>
                     </form> --}}
-                    <button class="addToCartBtn" cID={{this.cartID}} data-product-id={{this.product._id}}>Agregar al carrito</button>
+                    <button class="addToCartBtn" cID={{this.cartID}} data-product-id={{this.product._id}}>Agregar al
+                        carrito</button>
                 </td>
+                {{/if}}
             </tr>
         </tbody>
     </table>
