@@ -14,7 +14,7 @@
 </div>
 
 {{#if products.length}}
-    <button id="purchaseBtn" data-cart-id="{{cid}}">Finalizar Compra</button> <!-- Agregar atributo de datos -->
+    <button id="purchaseBtn" data-cart-id="{{cid}}" data-mail-user="{{mailUser}}">Finalizar Compra</button> <!-- Agregar atributo de datos -->
 {{/if}}
 
 <div id="purchaseResults" class="ticket" style="display: none;">
@@ -24,4 +24,4 @@
     <ul id="notPurchasedProducts"></ul>
 </div>
 
-<script src="/js/cartPurchase.js"></script>
+<script type="module" src="/js/cartPurchase.js"></script>

@@ -71,7 +71,8 @@ export const readViewsCartController = async (req, res) => {
       if (result === null) {
         return res.status(404).json({ status: 'error', error: 'Cart not found' });
       }
-      res.render('carts', { cid: result._id, products: result.products });
+      const mailUser = req.session.user.email;
+      res.render('carts', { cid: result._id, products: result.products, mailUser: mailUser});
     } catch (error) {
       res.status(500).json({ status: 'error', error: error.message });
     }
